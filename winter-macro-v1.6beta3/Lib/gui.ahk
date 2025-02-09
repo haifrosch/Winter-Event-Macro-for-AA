@@ -26,7 +26,7 @@ MinimizeButton.OnEvent("Click", (*) => MinimizeGUI())
 CloseAppButton := MainGUI.Add("Picture", "x1052 y10 w30 h32 +BackgroundTrans cffffff", CloseImage)
 CloseAppButton.OnEvent("Click", (*) => ExitApp())
 
-GuideBttn := MainGui.Add("Button", "x830 y270 w105 cffffff +BackgroundTrans +Center", "How to use?")
+GuideBttn := MainGui.Add("Button", "x840 y270 w105 cffffff +BackgroundTrans +Center", "How to use?")
 GuideBttn.OnEvent("Click", (*) => OpenGuide())
 
 #Requires AutoHotkey v2.0
@@ -182,7 +182,7 @@ MainGUI.Add("Text", "x940 y170 h60 cffffff +BackgroundTrans", "Placements: ")
 MainGUI.Add("Text", "x940 y200 h60 cffffff +BackgroundTrans", "Placements: ")
 MainGUI.Add("Text", "x940 y230 h60 cffffff +BackgroundTrans", "Placements: ")
 
-SaveConfigBttn := MainGUI.Add("Button", "x830 y305 w105 cffffff +Center", "Load config")
+SaveConfigBttn := MainGUI.Add("Button", "x840 y305 w105 cffffff +Center", "Load config")
 SaveConfigBttn.OnEvent('Click', (*) => LoadConfig())
 
 SaveConfigBttn := MainGUI.Add("Button", "x955 y305 w105 cffffff +Center", "Save config")
@@ -197,7 +197,7 @@ KeyBinds := MainGUI.Add("Text", "x830 y630 w238 h300 r7 cffffff +BackgroundTrans
 
 MainGUI.SetFont("s16 bold", "Segoe UI")
 
-MainGUI.Add("Text", "center x10 y650 w260 c4dce58 +BackgroundTrans", "Winter Event v1.6-a2-haie")
+MainGUI.Add("Text", "x20 y635 w260 c4dce58 +BackgroundTrans", "Haie's Winter Macro v1.6-beta3")
 
 MainGUI.Show("x27 y15 w1100 h705")
 
