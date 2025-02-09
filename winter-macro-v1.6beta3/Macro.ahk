@@ -97,7 +97,7 @@ IngameSettingsIcon := "|<ingameSettingsIcon>**50$22.07U00z007C00MM0xVj7w3ysUAT00
 
 SettingsMenuOFF := "|<>**50$22.00zwTnCLXvrPrjRTg8Ravro9fHEahBWuoLvfFjSh7Xuo7xvm"
 
-NewMainSettingUI := "|<>**50$51.wT0w00006nM5U0000qPyjjzyTWqwxhPAzCPrNhfAPrPTrhhPrRvBirhfSfUNhqxhPpRzBSxhvSfjknPBqPpSu6Pbi/SfskyDrzzxvyU"
+NewMainSettingUI := "|<NewUISensCheck>*103$73.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzwzDyTzzwDzzzynjzNzzw3zzzztzzwzzyzks7VU8Sk1tzDlAHYmQiNCtzkvqQrtCHAbAzwA1CMQb9iHazzqzbD6Hab9uTzvTnbv9n3YwDy1WNn9aNXnCDzVsQtVn4ttXbzzzzzzzzzzznzzzzzzzzzzzXzzzzzzzzzzzlzzzzzzzzzzzzzzzzzzzzzzzzzw"
 
 GraphQualityMinus := "|<>*95$28.zw0zzz00zzkzkzyDzlznzznyTzzbnzzzCTzzyNzzztjzzzozzzz3zzzwTzzzty00Tbs01yTU07ty00TbzzzyDzzzkzzzz/zzzxbzzzaTzzyQzzzntzzyTnzznzXzwTz3z3zz00zzz0DzU"
 
@@ -1220,7 +1220,7 @@ AutoSettingsChecker() {
         BetterClick(246, 91)
         Sleep 1000
 
-        if ((ok:=FindText(&X, &Y, 43, 180, 196, 298, 0, 0, NewMainSettingUI))) {
+        if ((ok:=FindText(&X, &Y, 43, 114, 830, 389, 0, 0, NewMainSettingUI)) or (ok:=FindText(&X, &Y, 35, 301, 828, 524, 0, 0, GraphicsModeCheck))) {
             AddToLog("New UI detected")
             Sleep 500
             SendInput("{Down}")
