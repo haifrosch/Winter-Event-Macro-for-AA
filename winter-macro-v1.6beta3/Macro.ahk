@@ -101,6 +101,12 @@ NewMainSettingUI := "|<>**50$51.wT0w00006nM5U0000qPyjjzyTWqwxhPAzCPrNhfAPrPTrhhP
 
 GraphQualityMinus := "|<>*95$28.zw0zzz00zzkzkzyDzlznzznyTzzbnzzzCTzzyNzzztjzzzozzzz3zzzwTzzzty00Tbs01yTU07ty00TbzzzyDzzzkzzzz/zzzxbzzzaTzzyQzzzntzzyTnzznzXzwTz3z3zz00zzz0DzU"
 
+NextButtonCheck := "|<nextButtonCheck>**70$56.0000000000000000000000000000000000000000000000000000000000000000000000000000000000001wDU000S00na8000Dk0ARW0002A033MVsM1X00kS9zjDsw0A3WkSTA1U30ss3XX0M0l6A0MEk60AEX770SD0360llsBXU0lkA0S38k0AS37z0OD035Uk3V3Uk0lgC0MswA0AFakCTNX01wDbywSDU000000000000000000000000000000000000000000000000000000008"
+
+ReplayButtonCheck := "|<ReplayButtonCheck>**50$79.0000000000000000000000000000000007000000Tw00007s00000TzU0007A00000M1s0003600000A0C0001X000006031U00lU010033UryTyMkzzsy1XsTjzzgNzzyTUlaC0w0SAkFXMMMz60C076k0kwAAD22303Xs0MSA6033VVklsQC66301VkkwMwS7361U0k0sSASB3k30ksMTwC6D3Vw30My4Du073U0q1UAP30703UM0NVk6Alk3U3sC0Akk3aNw3lzCDnCMM0z7rzsz3yzyMM0C1kzgM0S7CAA000006A00006A0000036000066000001n00001a000000TU0000z0000007000007000000000000001"
+;435, 144, 605, 187
+ReturnToLobbyCheck := "|<ReturnToLobbyCheck>**50$55.0000000007k0DUT0007w0DsTk003606AAM001X0366A000lVtXX71kkMnzlxXtwyAPVsblDana/0Q0s1lsn5060A0MstXXX366CAMllsXn7b6AMswFtXnkAAQQMMkls6660A0M0q631UC0Q0nX0twDAyNtX0DryztzklU1Us4E8UlU0000000Mk0000000AM00000003s00000000s0000000000U"
+;331, 142, 425, 180
 
 AddToLog("You can pause/unpause with F4.")
 F4::Pause -1
@@ -179,7 +185,7 @@ BetterClick(x, y, LR := "Left") { ; credits to yuh for this, lowk a life saver
     MouseMove(1, 0, , "R")
     Sleep(50)
     MouseClick(LR, -1, 0, , , , "R")
-    Sleep(100)
+    Sleep(50)
 }
 
 GoToRaids() {
@@ -1067,7 +1073,7 @@ FindAndClickColor(targetColor := 0x006783, searchArea := [0, 0, GetWindowCenter(
         ; Color found, click on the detected coordinates
 		AddToLog("Beam found at X" foundX " Y" foundY " . Waiting 5s before clicking")
         Sleep 5000
-        BetterClick(foundX, foundY, "R")
+        BetterClick(foundX, foundY, "Right")
         AddToLog("YES IT JUST CLICKED ON THE BEAM")
         AddToLog("Waiting 14 seconds.")
 		Sleep 10000
@@ -1176,8 +1182,9 @@ LobbyLoop() {
     return GoToRaids()
 }
 
+
 CheckForLobbyButton() {
-    if (ok := FindText(&X, &Y, 273, 103, 482, 214, 0, 0, LobbyText)) {
+    if (ok := FindText(&X, &Y, 31, 142, 425, 180, 0, 0, ReturnToLobbyCheck) or ok := FindText(&X, &Y, 435, 144, 605, 187, 0, 0, ReplayButtonCheck)) {
         return true
     }
 }
