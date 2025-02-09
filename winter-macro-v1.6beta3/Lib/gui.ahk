@@ -99,6 +99,12 @@ MatchMode := MainGUI.Add("Radio", "x295 y650 w100 h23 cffffff Checked", "Matchma
 SoloMode := MainGUI.Add("Radio", "x295 y670 w100 h23 cffffff", "Solo")
 changeMatchMode() {
     global matchModeEnabled := MatchMode.Value
+    if (matchModeEnabled == 1) {
+        AddToLog("Matchmaking Mode on")
+    }
+    else {
+        AddToLog("Solo Mode on")
+    }
 }
 MatchMode.OnEvent('Click', (*) => changeMatchMode())
 SoloMode.OnEvent('Click', (*) => changeMatchMode())
@@ -109,6 +115,12 @@ LobbyMode := MainGUI.Add("Radio", "x430 y650 w100 h23 cffffff Checked", "Back to
 ReplayMode := MainGUI.Add("Radio", "x430 y670 w100 h23 cffffff", "Replay")
 changeLobbyMode() {
     global backToLobbyEnabled := LobbyMode.Value
+    if (backToLobbyEnabled == 1) {
+        AddToLog("Back to Lobby enabled")
+    }
+    else {
+        AddToLog("Replaying enabled")
+    }
 }
 LobbyMode.OnEvent('Click', (*) => changeLobbyMode())
 ReplayMode.OnEvent('Click', (*) => changeLobbyMode())
@@ -124,6 +136,12 @@ AutoAbility.OnEvent('Click', (*) => changeAutoAbility())
 SettingsChecker := MainGUI.Add("Checkbox", "x565 y670 w100 cffffff", "Auto Settings")
 changeSettingsChecker() {
     global settingsCheckerEnabled := SettingsChecker.Value
+    if (settingsCheckerEnabled == 1) {
+        AddToLog("Auto Settings ON")
+    }
+    else {
+        AddToLog("Auto Settings OFF")
+    }
 }
 SettingsChecker.OnEvent('Click', (*) => changeSettingsChecker())
 
@@ -131,7 +149,8 @@ PlacementSpeedGroupbox := MainGUI.Add("GroupBox", "x690 y630 w120 h70 c4dce58", 
 PlacementSpeedCombo := MainGUI.Add("ComboBox", "x705 y660 w90", ["Super Fast (1s)", "Fast (1.5s)", "Default (2s)", "Slow (2.5s)", "Very Slow (3s)", "Toaster (4s)"])
 PlacementSpeedCombo.OnEvent('Change', (*) => placementSpeedChange())
 placementSpeedChange() {
-    global sleepTimer := PlacementSpeedCombo.Value	
+    global sleepTimer := PlacementSpeedCombo.Value
+    AddToLog("New sleeptimer set!")
 }
 
 MainGUI.Add("Picture", "x820 y-20 w90 h90 +BackgroundTrans cffffff", )
