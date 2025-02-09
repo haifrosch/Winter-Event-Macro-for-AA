@@ -113,7 +113,7 @@ SaveConfigToFile(filePath) {
     File.WriteLine("Speed=" PlacementSpeedDDL.Value)
 
     File.WriteLine("[Settings]")
-    File.WriteLine("Auto Settings=" SettingsChecker.Value)
+    File.WriteLine("AutoSettings=" SettingsChecker.Value)
 
     File.Close()
     AddToLog("Configuration saved successfully to " filePath ".`nIf you changed keybinds, you will have to restart the macro.`n")
@@ -277,7 +277,7 @@ LoadConfigFromFile(filePath) {
             }
 
             else if (section = "Settings") {
-                if RegExMatch(line, "Auto Settings=(\d+)", &match) {
+                if RegExMatch(line, "AutoSettings=(\d+)", &match) {
                     SettingsChecker.Value := match.1 ; Set the checkbox value
                 }
             }
