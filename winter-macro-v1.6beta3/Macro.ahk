@@ -1299,7 +1299,7 @@ AutoSettingsChecker() {
             if (ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsModeCheck))
             {
                 
-                BetterClick(X-35, Y-46)
+                BetterClick(X-35, Y-80)
                 AddToLog("Graphics Quality set to manual.")
                 while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsManualCheck))) {
                     SendInput("{Left}")
