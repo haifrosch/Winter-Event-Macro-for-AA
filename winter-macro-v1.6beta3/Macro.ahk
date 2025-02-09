@@ -151,6 +151,7 @@ InitializeMacro() {
             "+0x1000",)
         return
     }
+    AutoSettingsChecker()
 
     if (ok := FindText(&X, &Y, 746, 476, 862, 569, 0, 0, AreasText)) {
         GoToRaids()
@@ -158,9 +159,6 @@ InitializeMacro() {
     else {
         MsgBox("You must be in the lobby with default camera angle to start the macro.", "Error T3", "+0x1000",)
         return
-    }
-    AutoSettingsChecker()
-    switch sleepTimer {
     }
 }
 
