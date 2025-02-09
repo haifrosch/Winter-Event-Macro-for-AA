@@ -1489,10 +1489,9 @@ OnSpawnSetup() {
     TapToMove(true)
     Sleep 200
 
-    AddToLog("Attempting to move to spot")
-    loop 200 {
+    AddToLog("Attempting to move to beam")
+    loop 80 {
         Sleep 100
-
         if FindAndClickColor() {
             break
         }
