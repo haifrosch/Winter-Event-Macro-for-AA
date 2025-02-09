@@ -110,7 +110,7 @@ SaveConfigToFile(filePath) {
     File.WriteLine("Lobby=" LobbyMode.Value)
 
     File.WriteLine("[Placement Speed]")
-    File.WriteLine("Speed=" PlacementSpeedCombo.Value)
+    File.WriteLine("Speed=" PlacementSpeedDDL.Value)
 
     File.WriteLine("[Settings]")
     File.WriteLine("Auto Settings=" SettingsChecker.Value)
@@ -138,7 +138,7 @@ LoadConfigFromFile(filePath) {
 	global autoAbilityEnabled := 1
     global settingsCheckerEnabled := 0
     PlacementDropdown.Value := 6
-    PlacementSpeedCombo.Value := 3
+    PlacementSpeedDDL.Value := 3
     enabled1.Value := 1
     enabled2.Value := 1
     enabled3.Value := 1
@@ -272,7 +272,7 @@ LoadConfigFromFile(filePath) {
 
             else if (section = "Placement Speed") {
                 if RegExMatch(line, "Speed=(\d+)", &match) {
-                    PlacementSpeedCombo.Value := match.1 ; Set the checkbox value
+                    PlacementSpeedDDL.Value := match.1 ; Set the checkbox value
                 }
             }
 

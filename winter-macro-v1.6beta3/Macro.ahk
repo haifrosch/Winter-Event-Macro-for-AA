@@ -110,7 +110,7 @@ global matchModeEnabled := MatchMode.Value
 global backToLobbyEnabled := LobbyMode.Value
 global autoAbilityEnabled := AutoAbility.Value
 global settingsCheckerEnabled := SettingsChecker.Value		
-global sleepTimer := PlacementSpeedCombo.Value			   
+global sleepTimer := PlacementSpeedDDL.Value			   
 
 SetupMacro() {
     if ControlGetVisible(keybindsGui) {
