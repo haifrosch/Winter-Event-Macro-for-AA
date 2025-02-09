@@ -213,7 +213,7 @@ GoToRaids() {
         }
 
         ; go to xmas map
-        if (moveOnce == 0) {
+        if (moveOnce == 0 or matchModeEnabled) {
             BetterClick(89, 302)
             Sleep 2000
             SendInput ("{a up}")
@@ -1017,7 +1017,7 @@ UpgradeUnit(x, y) {
     BetterClick(210, 363) ; upgrade
     BetterClick(210, 363) ; upgrade
     BetterClick(210, 363) ; upgrade
-    Sleep 1000
+    Sleep 500
 }
 
 IsMaxUpgrade() {
@@ -1432,7 +1432,7 @@ AntiCaptcha() {
     BetterClick(383, 221)
     Sleep 500
 
-    sleep 10000
+    sleep 12000
     if (ok := FindText(&X, &Y, 10, 70, 350, 205, 0, 0, LoadingScreen)) {
         return
     }
@@ -1447,10 +1447,9 @@ AntiCaptcha() {
         HoldKey("Space", 2000)
     }
 
-    Sleep 1500
     if (ok := FindText(&X, &Y, 221, 206, 403, 355, 0, 0, MatchmakeUI)) {
         AddToLog("Waiting for captcha cooldown then retrying")
-        Sleep 6000
+        Sleep 20000
     }
     Reconnect()
     return
