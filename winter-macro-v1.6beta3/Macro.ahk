@@ -1190,7 +1190,7 @@ CheckForLobbyButton() {
 }
 
 Checkforloss(targetColor := 0x161616){
-    if (PixelSearch(&foundX, &foundY, 157, 63, 1, 1, targetColor, 0)) {
+    if (PixelSearch(&foundX, &foundY, 157, 63, 1, 1, targetColor, 0) or ok:=FindText(&X, &Y, 368, 90, 497, 130, 0, 0, DeathText)) {
         return true
     }
     else
