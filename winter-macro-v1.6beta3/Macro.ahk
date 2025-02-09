@@ -1303,7 +1303,7 @@ AutoSettingsChecker() {
             if (ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsModeCheck))
             {
                 
-                BetterClick(X-15, Y-40)
+                BetterClick(X-35, Y-46)
                 AddToLog("Graphics Quality set to manual.")
                 while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsManualCheck))) {
                     SendInput("{Left}")
@@ -1312,10 +1312,9 @@ AutoSettingsChecker() {
     
                 SendInput("{Down}")
                 AddToLog("Reducing Graphics Quality to 1")
-    
                 Sleep 1000
     
-                loop 9 {
+                while (ok:=FindText(&X, &Y, 48, 309, 834, 543, 0, 0, GraphQualityMinus)) {
                     SendInput("{Left}")
                     Sleep 250
                 }
