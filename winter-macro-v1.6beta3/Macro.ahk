@@ -110,7 +110,6 @@ global hasReconnect := 0
 global matchModeEnabled := MatchMode.Value
 global backToLobbyEnabled := LobbyMode.Value
 global autoAbilityEnabled := AutoAbility.Value
-global sleepTimer := PlacementSpeedCombo.Value	
 global settingsCheckerEnabled := SettingsChecker.Value							   
 
 SetupMacro() {
@@ -178,13 +177,14 @@ BetterClick(x, y, LR := "Left") { ; credits to yuh for this, lowk a life saver
     MouseMove(x, y)
     Sleep(50)
     MouseMove(1, 0, , "R")
-    Sleep(100)
+    Sleep(50)
     MouseClick(LR, -1, 0, , , , "R")
     Sleep(50)
 }
 
 GoToRaids() {
     SendInput ("{Tab}")
+    
     AutoSettingsChecker()
 
     switch sleepTimer {
@@ -216,16 +216,19 @@ GoToRaids() {
         }
 
         ; go to xmas map
+        if (moveOnce == 0) {
+            BetterClick(89, 302)
+            Sleep 2000
+            SendInput ("{a up}")
+            ; go to teleporter
+            Sleep 100
+            SendInput ("{a down}")
+            Sleep 6000
+            SendInput ("{a up}")
+            KeyWait "a" ; Wait for "d" to be fully processed
+        }
 
-        BetterClick(89, 302)
-        Sleep 2000
-        SendInput ("{a up}")
-        ; go to teleporter
-        Sleep 100
-        SendInput ("{a down}")
-        Sleep 6000
-        SendInput ("{a up}")
-        KeyWait "a" ; Wait for "d" to be fully processed
+        moveOnce++
 
         ;sacred planet act 4
         Sleep 1200
@@ -275,7 +278,7 @@ PlaceUnit(x, y, slot := 1) {
 
 IsPlacementSuccessful() {
     
-    switch SleepTimer {
+    switch sleepTimer {
         case 1: Sleep 1000
         case 2: Sleep 1500
         case 3: Sleep 2000
@@ -283,19 +286,17 @@ IsPlacementSuccessful() {
         case 5: Sleep 3000
         case 6: Sleep 4000    
     }
-    
-    if (ok := FindText(&X, &Y, 48, 396, 127, 433, 0, 0, Priority) or ok := FindText(&X, &Y, 200, 239, 276, 270, 0, 0, UnitExistence) ) {
-        AddToLog("Placed unit successfully!")
-        
-        Sleep 500
-
-        if (autoAbilityEnabled and ok := FindText(&X, &Y, 367, 262, 445, 302, 0, 0, AbilityOFF)) {
-            AddToLog("Ability found. Toggling ON")
-            BetterClick(373, 237)
+    loop 2 {
+        if (ok := FindText(&X, &Y, 48, 396, 127, 433, 0, 0, Priority) or ok := FindText(&X, &Y, 200, 239, 276, 270, 0, 0, UnitExistence) ) {
+            AddToLog("Placed unit successfully!")
+            Sleep 100
+            if (autoAbilityEnabled and ok := FindText(&X, &Y, 367, 262, 445, 302, 0, 0, AbilityOFF)) {
+                AddToLog("Ability found. Toggling ON")
+                BetterClick(373, 237)
+            }
+            BetterClick(329, 184) ; close upg menu
+            return true
         }
-        
-        BetterClick(329, 184) ; close upg menu
-        return true
     }
     return false
 }

@@ -129,6 +129,10 @@ SettingsChecker.OnEvent('Click', (*) => changeSettingsChecker())
 
 PlacementSpeedGroupbox := MainGUI.Add("GroupBox", "x690 y630 w120 h70 c4dce58", "Placement Speed")
 PlacementSpeedCombo := MainGUI.Add("ComboBox", "x705 y660 w90", ["Super Fast (1s)", "Fast (1.5s)", "Default (2s)", "Slow (2.5s)", "Very Slow (3s)", "Toaster (4s)"])
+PlacementSpeedCombo.OnEvent('Change', (*) => placementSpeedChange())
+placementSpeedChange() {
+    global sleepTimer := PlacementSpeedCombo.Value	
+}
 
 MainGUI.Add("Picture", "x820 y-20 w90 h90 +BackgroundTrans cffffff", )
 TaxiImage := MainGUI.Add("Picture", "x820 y-20 w90 h90 +BackgroundTrans cffffff", TaxiImage)
