@@ -185,7 +185,7 @@ BetterClick(x, y, LR := "Left") { ; credits to yuh for this, lowk a life saver
     MouseMove(1, 0, , "R")
     Sleep(50)
     MouseClick(LR, -1, 0, , , , "R")
-    Sleep(50)
+    Sleep(100)
 }
 
 GoToRaids() {
