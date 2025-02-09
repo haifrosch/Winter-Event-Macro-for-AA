@@ -1071,12 +1071,8 @@ FindAndClickColor(targetColor := 0x006783, searchArea := [0, 0, GetWindowCenter(
     ; Perform the pixel search
     if (PixelSearch(&foundX, &foundY, x1, y1, x2, y2, targetColor, 0)) {
         ; Color found, click on the detected coordinates
-		AddToLog("Beam found at X" foundX " Y" foundY " . Waiting 5s before clicking")
-        Sleep 5000
+		AddToLog("Beam found at X" foundX " Y" foundY " . Clicking Now")
         BetterClick(foundX, foundY, "Right")
-        AddToLog("YES IT JUST CLICKED ON THE BEAM")
-        AddToLog("Waiting 14 seconds.")
-		Sleep 10000
         return true
     }
 }
@@ -1502,7 +1498,7 @@ OnSpawnSetup() {
             break
         }
     }
-    Sleep 4000
+    Sleep 14000
     ;BetterClick(590, 15) ; click on P
     ;Sleep 1000
     TapToMove(false)
