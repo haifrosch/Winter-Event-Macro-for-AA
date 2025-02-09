@@ -103,14 +103,14 @@ GraphQualityMinus := "|<>*95$28.zw0zzz00zzkzkzyDzlznzznyTzzbnzzzCTzzyNzzztjzzzoz
 
 
 AddToLog("You can pause/unpause with F4.")
-AddToLog("PLEASE SAVE BEFORE RUNNING THE MACRO")
 F4::Pause -1
 
 global hasReconnect := 0									
 global matchModeEnabled := MatchMode.Value
 global backToLobbyEnabled := LobbyMode.Value
 global autoAbilityEnabled := AutoAbility.Value
-global settingsCheckerEnabled := SettingsChecker.Value							   
+global settingsCheckerEnabled := SettingsChecker.Value		
+global sleepTimer := PlacementSpeedCombo.Value			   
 
 SetupMacro() {
     if ControlGetVisible(keybindsGui) {
@@ -160,6 +160,10 @@ InitializeMacro() {
         MsgBox("You must be in the lobby with default camera angle to start the macro.", "Error T3", "+0x1000",)
         return
     }
+
+    AutoSettingsChecker()
+    switch sleepTimer {
+    }
 }
 
 SetDefaultKeyboard(localeID) {
@@ -179,22 +183,13 @@ BetterClick(x, y, LR := "Left") { ; credits to yuh for this, lowk a life saver
     MouseMove(1, 0, , "R")
     Sleep(50)
     MouseClick(LR, -1, 0, , , , "R")
-    Sleep(50)
+    Sleep(100)
 }
 
 GoToRaids() {
     SendInput ("{Tab}")
-    
-    AutoSettingsChecker()
 
-    switch sleepTimer {
-        case 1: AddToLog("Sleep timer: 1000ms")
-        case 2: AddToLog("Sleep timer: 1500ms")
-        case 3: AddToLog("Sleep timer: 2000ms")
-        case 4: AddToLog("Sleep timer: 2500ms")
-        case 5: AddToLog("Sleep timer: 3000ms")
-        case 6: AddToLog("Sleep timer: 4000ms")
-    }
+    moveOnce := 0
     loop {
         if (ok := FindText(&X, &Y, 10, 70, 350, 205, 0, 0, LoadingScreen)) {
             AddToLog("Found LoadingScreen, stopping loop")
@@ -880,7 +875,6 @@ UpgradeUnits() {
 					cardSelector()
 				}
                 BetterClick(284, 400) ; next
-                BetterClick(60, 450) ; move mouse
 
                 if ShouldStopUpgrading() {
                     AddToLog("Found return to lobby, going back.")
@@ -1021,7 +1015,7 @@ UpgradeUnit(x, y) {
     BetterClick(210, 363) ; upgrade
     BetterClick(210, 363) ; upgrade
     BetterClick(210, 363) ; upgrade
-    Sleep 1500
+    Sleep 1000
 }
 
 IsMaxUpgrade() {
@@ -1161,7 +1155,7 @@ StartedLoop() {
     	BetterClick(350, 103) ; click yes
         BetterClick(350, 100) ; click yes
         BetterClick(350, 97) ; click yes
-	Sleep 100
+	Sleep 500
 	loop {
         Sleep 1000
         if (ok := FindText(&X, &Y, 326, 60, 547, 173, 0, 0, VoteStart))
@@ -1274,61 +1268,62 @@ AutoSettingsChecker() {
 
         }
         else {
-        AddToLog("Old UI detected")
-        Sleep 500
-        MouseMove(0, 50, , "R")
-        Sleep 500
-        SendInput("{Down}")
-        Sleep 500
-    
-
-        AddToLog("Checking Camera Mode (Default Classic)")
-        while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, CameraModeCheck))) {
-            SendInput("{Right}")
-            Sleep 1000 
-        }
-        SendInput("{Down}")
-        Sleep 500
-        AddToLog("Selecting Default (Keyboard)")
-        while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, DefaultKeyboardCheck))) {
-            SendInput("{Right}")
-            Sleep 1000 
-        }
-        
-        Sleep 1000
-        loop 4 {
-            Sleep 250
-            SendInput("{WheelDown 1}") ; scroll
-        }
-
-        Sleep 1000
-
-        if (ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsModeCheck))
-        {
-            
-            BetterClick(X-15, Y-30)
-            AddToLog("Graphics Quality set to manual.")
-            while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsManualCheck))) {
-                SendInput("{Left}")
-                Sleep 1000
-            }
-
+            AddToLog("Old UI detected")
+            Sleep 500
+            MouseMove(0, 50, , "R")
+            Sleep 500
             SendInput("{Down}")
-            AddToLog("Reducing Graphics Quality to 1")
-
-            Sleep 1000
-
-            loop 9 {
-                SendInput("{Left}")
-                Sleep 250
+            Sleep 500
+        
+    
+            AddToLog("Checking Camera Mode (Default Classic)")
+            while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, CameraModeCheck))) {
+                SendInput("{Right}")
+                Sleep 1000 
             }
+            SendInput("{Down}")
+            Sleep 500
+            AddToLog("Selecting Default (Keyboard)")
+            while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, DefaultKeyboardCheck))) {
+                SendInput("{Right}")
+                Sleep 1000 
+            }
+            
+            Sleep 1000
+            loop 4 {
+                Sleep 250
+                SendInput("{WheelDown 1}") ; scroll
+            }
+    
+            Sleep 1000
+    
+            if (ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsModeCheck))
+            {
+                
+                BetterClick(X-15, Y-40)
+                AddToLog("Graphics Quality set to manual.")
+                while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsManualCheck))) {
+                    SendInput("{Left}")
+                    Sleep 1000
+                }
+    
+                SendInput("{Down}")
+                AddToLog("Reducing Graphics Quality to 1")
+    
+                Sleep 1000
+    
+                loop 9 {
+                    SendInput("{Left}")
+                    Sleep 250
+                }
+            }
+            Sleep 500
+            SendInput("{Esc}")
+            Sleep 1000
         }
-        Sleep 500
-        SendInput("{Esc}")
-        Sleep 1000
-        }
-
+    
     }
+    
 }
 
 
