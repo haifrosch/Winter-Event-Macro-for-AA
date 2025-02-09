@@ -81,7 +81,7 @@ sendWebhook() {
         return
     }
 
-    pCroppedBitmap := CropImage(pBitmap, 27, 15, 1100, 640)
+    pCroppedBitmap := CropImage(pBitmap, 27, 15, 1100, 705)
     if !pCroppedBitmap {
         MsgBox("Failed to crop the bitmap")
         Gdip_DisposeImage(pBitmap)

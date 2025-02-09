@@ -127,7 +127,6 @@ SetupMacro() {
         WinActivate("Taxi Winter Event Farm")
         Sleep 100
     }
-
 }
 
 InitializeMacro() {
@@ -160,7 +159,6 @@ InitializeMacro() {
         MsgBox("You must be in the lobby with default camera angle to start the macro.", "Error T3", "+0x1000",)
         return
     }
-
     AutoSettingsChecker()
     switch sleepTimer {
     }
@@ -840,7 +838,7 @@ IsMaxed(coord) {
 }
 
 UpgradeUnits() {
-    if UUPCheckbox.Value = 1 {
+    if UUPCheckbox.Value == 1 {
         global successfulCoordinates, maxedCoordinates, unitUpgradePrioritydropDowns
         AddToLog("Beginning prioritized unit upgrades.")
 
