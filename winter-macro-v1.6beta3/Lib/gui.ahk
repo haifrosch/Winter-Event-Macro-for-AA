@@ -24,7 +24,11 @@ MinimizeButton := MainGUI.Add("Picture", "x1000 y22 w37 h9 +BackgroundTrans cfff
 MinimizeButton.OnEvent("Click", (*) => MinimizeGUI())
 
 CloseAppButton := MainGUI.Add("Picture", "x1052 y10 w30 h32 +BackgroundTrans cffffff", CloseImage)
-CloseAppButton.OnEvent("Click", (*) => ExitApp())
+CloseAppButton.OnEvent("Click", (*) => ExitAndSaveApp())
+ExitAndSaveApp() {
+    SaveConfig()
+    ExitApp()
+}
 
 GuideBttn := MainGui.Add("Button", "x840 y270 w105 cffffff +BackgroundTrans +Center", "How to use?")
 GuideBttn.OnEvent("Click", (*) => OpenGuide())
