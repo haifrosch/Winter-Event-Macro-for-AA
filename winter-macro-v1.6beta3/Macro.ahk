@@ -212,6 +212,8 @@ GoToRaids() {
             BetterClick(137, 32)
         }
 
+        Reconnect()
+
         ; go to xmas map
         if (moveOnce == 0 or matchModeEnabled) {
             BetterClick(89, 302)
@@ -386,8 +388,8 @@ SpiralPlacement(gridPlacement := false) {
                         cardSelector()
                 }
                 
-				BetterClick(284, 400) ; next
-				BetterClick(60, 450) ; move mouse
+                BetterClick(348, 391) ; next
+                BetterClick(565, 563) ; move mouse
                 if ShouldStopUpgrading(1) {
                     AddToLog("Stopping due to finding lobby  condition.")
                     return LobbyLoop()
@@ -483,8 +485,8 @@ LinePlacement() {
 				if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 					cardSelector()
 				}
-				BetterClick(284, 400) ; next
-				BetterClick(60, 450) ; move mouse
+                BetterClick(348, 391) ; next
+                BetterClick(565, 563) ; move mouse
                 if ShouldStopUpgrading(1) {
                     AddToLog("Stopping due to finding lobby  condition.")
                     return LobbyLoop()
@@ -598,8 +600,8 @@ LinePlacementGrid() {
 				if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 					cardSelector()
 				}
-				BetterClick(284, 400) ; next
-				BetterClick(60, 450) ; move mouse
+                BetterClick(348, 391) ; next
+                BetterClick(565, 563) ; move mouse
                 if ShouldStopUpgrading(1) {
                     AddToLog("Stopping due to finding lobby  condition.")
                     return LobbyLoop()
@@ -696,8 +698,8 @@ ZigZagPlacement(gridPlacement := false) {
  				if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 					cardSelector()
 				}
-            BetterClick(284, 400) ; next
-            BetterClick(60, 450) ; move mouse
+                BetterClick(348, 391) ; next
+                BetterClick(565, 563) ; move mouse
             if ShouldStopUpgrading(1) {
                 AddToLog("Stopping due to finding lobby  condition.")
                 return LobbyLoop()
@@ -774,8 +776,8 @@ PlaceInGrid(startX, startY, slotNum, &placementCount, &successfulCoordinates, &s
 		if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 			cardSelector()
 		}
-        BetterClick(284, 400) ; next
-        BetterClick(60, 450) ; move mouse
+        BetterClick(348, 391) ; next
+        BetterClick(565, 563) ; move mouse
         if ShouldStopUpgrading(1) {
             AddToLog("Stopping due to finding lobby condition.")
             return LobbyLoop()
@@ -876,7 +878,8 @@ UpgradeUnits() {
 				if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 					cardSelector()
 				}
-                BetterClick(284, 400) ; next
+                BetterClick(348, 391) ; next
+                BetterClick(565, 563) ; move mouse
 
                 if ShouldStopUpgrading() {
                     AddToLog("Found return to lobby, going back.")
@@ -905,7 +908,8 @@ UpgradeUnits() {
 
         AddToLog("All units upgraded or maxed.")
         while !ShouldStopUpgrading() {
-            BetterClick(284, 400) ; next
+            BetterClick(348, 391) ; next
+            BetterClick(565, 563) ; move mouse
             Sleep(2000)
 			if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 				cardSelector()
@@ -947,7 +951,7 @@ UpgradeUnits() {
 				if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 					cardSelector()
 				}
-                BetterClick(284, 400) ; next
+                BetterClick(348, 391) ; next
                 BetterClick(565, 563) ; move mouse
                 Reconnect()
             }
@@ -958,7 +962,8 @@ UpgradeUnits() {
 				if (ok := FindText(&cardX, &cardY, 196, 204, 568, 278, 0, 0, pick_card)) {
 					cardSelector()
 				}
-                BetterClick(284, 400) ; next
+                BetterClick(348, 391) ; next
+                BetterClick(565, 563) ; move mouse
                 if ShouldStopUpgrading() {
                     AddToLog("Stopping due to finding return to lobby button.")
                     return LobbyLoop()
@@ -1131,11 +1136,6 @@ LoadedLoop() {
 
         Reconnect()
     }
-    chat := ChatToSend.Value
-    if (ChatStatusBox.Value = 1 && StrLen(chat) > 0) {
-        AddToLog("Sending chat")
-        SendChat()
-    }
 }
 
 StartedLoop() {
@@ -1266,7 +1266,7 @@ AutoSettingsChecker() {
             Sleep 1000
 
         }
-        else {
+        /*else {
             AddToLog("Old UI detected")
             Sleep 500
             MouseMove(0, 50, , "R")
@@ -1299,7 +1299,7 @@ AutoSettingsChecker() {
             if (ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsModeCheck))
             {
                 
-                BetterClick(X-35, Y-80)
+                BetterClick(X-35, Y-40)
                 AddToLog("Graphics Quality set to manual.")
                 while (!(ok:=FindText(&X, &Y, 43, 166, 829, 528, 0, 0, GraphicsManualCheck))) {
                     SendInput("{Left}")
@@ -1318,7 +1318,7 @@ AutoSettingsChecker() {
             Sleep 500
             SendInput("{Esc}")
             Sleep 1000
-        }
+        }*/
     
     }
     
@@ -1432,7 +1432,7 @@ AntiCaptcha() {
     BetterClick(383, 221)
     Sleep 500
 
-    sleep 12000
+    sleep 15000
     if (ok := FindText(&X, &Y, 10, 70, 350, 205, 0, 0, LoadingScreen)) {
         return
     }
@@ -1507,6 +1507,11 @@ Reconnect() {
     color_home := PixelGetColor(10, 10)
     color_reconnect := PixelGetColor(519,329)
     global hasReconnect
+    if (WinExist(RobloxWindow))
+    { 
+        WinActivate(RobloxWindow)
+    }
+    
     if (color_home == 0x121215 or color_reconnect == 0x393B3D) {
         AddToLog("Disconnected! Attempting to reconnect...")
         if (DisconnectCheckbox.Value = 1) {
@@ -1515,6 +1520,7 @@ Reconnect() {
 
         ; Use Roblox deep linking to reconnect
         Run("roblox://placeID=" 8304191830)
+
         Sleep 2000
         if WinExist(RobloxWindow) {
             WinMove(27, 15, 800, 600, RobloxWindow)
