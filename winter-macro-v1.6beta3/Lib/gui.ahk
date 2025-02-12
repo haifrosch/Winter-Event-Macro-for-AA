@@ -201,7 +201,7 @@ KeyBinds := MainGUI.Add("Text", "x830 y630 w238 h300 r7 cffffff +BackgroundTrans
 
 MainGUI.SetFont("s16 bold", "Segoe UI")
 
-MainGUI.Add("Text", "x20 y635 w260 c4dce58 +BackgroundTrans", "Haie's Winter Macro v1.6-beta5")
+MainGUI.Add("Text", "x20 y635 w260 c4dce58 +BackgroundTrans", "Haie's Winter Macro v1.6-beta6")
 
 MainGUI.Show("x27 y15 w1100 h705")
 
