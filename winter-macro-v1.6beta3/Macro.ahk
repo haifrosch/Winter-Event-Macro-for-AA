@@ -211,20 +211,18 @@ GoToRaids() {
             BetterClick(137, 32)
         }
 
-        Reconnect()
 
         ; go to xmas map
-        if (matchModeEnabled) {
-            BetterClick(89, 302)
-            Sleep 2000
-            SendInput ("{a up}")
-            ; go to teleporter
-            Sleep 100
-            SendInput ("{a down}")
-            Sleep 6000
-            SendInput ("{a up}")
-            KeyWait "a" ; Wait for "d" to be fully processed
-        }
+        BetterClick(89, 302)
+        Sleep 2000
+        SendInput ("{a up}")
+        ; go to teleporter
+        Sleep 100
+        SendInput ("{a down}")
+        Sleep 6000
+        SendInput ("{a up}")
+        KeyWait "a" ; Wait for "d" to be fully processed
+        
 
 
         ;sacred planet act 4
@@ -236,6 +234,7 @@ GoToRaids() {
         } else {
             BetterClick(380, 340) ; play (non-matchmaking mode)
             Sleep 2000
+            Reconnect()
         }		 
     }
     LoadedLoop()
