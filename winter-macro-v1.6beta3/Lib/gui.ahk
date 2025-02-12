@@ -230,9 +230,9 @@ PrivateServerGUI.Add("Text", "x10 y8 w280 cWhite",
 )
 
 PrivateServerGUI.Add("Text", "x10 y56 cWhite", "PS Link")
-ChatToSend := PrivateServerGUI.Add("Edit", "x10 y70 w280", "Just a placeholder for next update, not functional yet")
+PSLinkForm := PrivateServerGUI.Add("Edit", "x10 y70 w280", "Just a placeholder for next update, not functional yet")
 
-ChatStatusBox := PrivateServerGUI.Add("Checkbox", "x10 y109 cWhite", "Enabled")
+PSCheckbox := PrivateServerGUI.Add("Checkbox", "x10 y109 cWhite", "Enabled")
 
 PrivateServerGUI.BackColor := "0c000a"
 PrivateServerGUI.MarginX := 20

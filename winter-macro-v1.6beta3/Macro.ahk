@@ -1191,21 +1191,6 @@ Checkforloss(targetColor := 0x161616){
         return false
 }
 
-SendChat() {
-    SendInput("/")
-    Sleep 250
-    chat := ChatToSend.Value
-    if (ChatStatusBox.Value = 1 && StrLen(chat) > 0) {
-        for char in StrSplit(chat) {
-            Send(char)
-            Sleep(Random(100, 200))  ; Optional delay between each keypress
-        }
-    }
-    Sleep 1200
-    SendInput("{Enter}")
-    Sleep 250
-    BetterClick(130, 43)
-}
 
 AutoSettingsChecker() {
     if (settingsCheckerEnabled) {

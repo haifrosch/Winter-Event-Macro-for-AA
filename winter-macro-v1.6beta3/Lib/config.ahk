@@ -82,9 +82,9 @@ SaveConfigToFile(filePath) {
     }
     File.WriteLine("AutoAbility=" AutoAbility.Value)
 
-    File.WriteLine("[ChatSettings]")
-    File.WriteLine("MessageToSend=" ChatToSend.Value)
-    File.WriteLine("ChatEnabled=" ChatStatusBox.Value)
+    File.WriteLine("[PSSettings]")
+    File.WriteLine("PSServerLink=" PSLinkForm.Value)
+    File.WriteLine("PSEnabled=" PSCheckbox.Value)
 
     File.WriteLine("[WebhookSettings]")
     File.WriteLine("WebhookURL=" WebhookURL.Value)
@@ -122,7 +122,7 @@ SaveConfigToFile(filePath) {
 LoadConfigFromFile(filePath) {
     global enabled1, enabled2, enabled3, enabled4, enabled5, enabled6
     global placement1, placement2, placement3, placement4, placement5, placement6
-    global dropDowns, ChatToSend, ChatStatusBox, WebhookURL, WebhookCheckbox, DisconnectCheckbox, UUPCheckbox
+    global dropDowns, PSCheckbox, PSLinkForm, WebhookURL, WebhookCheckbox, DisconnectCheckbox, UUPCheckbox
     global hotkey1, hotkey2, hotkey3
     global PlacementDropdown, MatchMode, LobbyMode
 
@@ -202,12 +202,12 @@ LoadConfigFromFile(filePath) {
                     AutoAbility.Value := autoAbilityEnabled
                 }
             }
-            else if (section = "ChatSettings") {
-                if RegExMatch(line, "MessageToSend=(.+)", &match) {
-                    ChatToSend.Value := match.1 ; Set the chat message
+            else if (section = "PSSettings") {
+                if RegExMatch(line, "PSServerLink=(.+)", &match) {
+                    PSLinkForm.Value := match.1 ; Set the chat message
                 }
-                if RegExMatch(line, "ChatEnabled=(\d+)", &match) {
-                    ChatStatusBox.Value := match.1 ; Set the checkbox value
+                if RegExMatch(line, "PSEnabled=(\d+)", &match) {
+                    PSCheckbox.Value := match.1 ; Set the checkbox value
                 }
             }
             else if (section = "WebhookSettings") {
