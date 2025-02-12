@@ -53,8 +53,8 @@ MainSettings.Add("Text", "x30 y20 w340 h190 +Center cffffff", "Settings")
 Webhookbttn := MainSettings.Add("Button", "x30 y45 w150", "Webhook Settings")
 Webhookbttn.OnEvent("Click", (*) => OpenWebhooks())
 
-SendChatBttn := MainSettings.Add("Button", "x220 y45 w150", "Send Chat")
-SendChatBttn.OnEvent("Click", (*) => OpenSendChat())
+SendChatBttn := MainSettings.Add("Button", "x220 y45 w150", "Private Server")
+SendChatBttn.OnEvent("Click", (*) => OpenPSGUI())
 
 SendChatBttn := MainSettings.Add("Button", "x30 y110 w150", "Keybinds")
 SendChatBttn.OnEvent("Click", (*) => OpenKeybinds())
@@ -222,27 +222,27 @@ OpenFaxiDiscord() {
     Run("https://discord.gg/UB9AaPzqdq")
 }
 
-SendChatGUI := Gui("+AlwaysOnTop")
+PrivateServerGUI := Gui("+AlwaysOnTop")
 
-SendChatGUI.SetFont("s8 bold", "Segoe UI")
-SendChatGUI.Add("Text", "x10 y8 w280 cWhite",
-    "Would you like the macro to send a message once it loads in a game? (it only sends it once per game and this is optional)"
+PrivateServerGUI.SetFont("s8 bold", "Segoe UI")
+PrivateServerGUI.Add("Text", "x10 y8 w280 cWhite",
+    "Enter your PS Link:"
 )
 
-SendChatGUI.Add("Text", "x10 y56 cWhite", "Message to send")
-ChatToSend := SendChatGUI.Add("Edit", "x10 y70 w280", "")
+PrivateServerGUI.Add("Text", "x10 y56 cWhite", "PS Link")
+ChatToSend := PrivateServerGUI.Add("Edit", "x10 y70 w280", "Just a placeholder for next update, not functional yet")
 
-ChatStatusBox := SendChatGUI.Add("Checkbox", "x10 y109 cWhite", "Enabled")
+ChatStatusBox := PrivateServerGUI.Add("Checkbox", "x10 y109 cWhite", "Enabled")
 
-SendChatGUI.BackColor := "0c000a"
-SendChatGUI.MarginX := 20
-SendChatGUI.MarginY := 20
+PrivateServerGUI.BackColor := "0c000a"
+PrivateServerGUI.MarginX := 20
+PrivateServerGUI.MarginY := 20
 
-SendChatGUI.OnEvent("Close", (*) => SendChatGUI.Hide())
-SendChatGUI.Title := "Send Chat"
+PrivateServerGUI.OnEvent("Close", (*) => PrivateServerGUI.Hide())
+PrivateServerGUI.Title := "Private Server"
 
-OpenSendChat() {
-    SendChatGUI.Show("w300 h150")
+OpenPSGUI() {
+    PrivateServerGUI.Show("w300 h150")
 }
 
 LoadLocal()
