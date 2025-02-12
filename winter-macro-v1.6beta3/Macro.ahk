@@ -191,7 +191,6 @@ BetterClick(x, y, LR := "Left") { ; credits to yuh for this, lowk a life saver
 GoToRaids() {
     SendInput ("{Tab}")
 
-    moveOnce := 0
     loop {
         if (ok := FindText(&X, &Y, 10, 70, 350, 205, 0, 0, LoadingScreen)) {
             AddToLog("Found LoadingScreen, stopping loop")
@@ -215,7 +214,7 @@ GoToRaids() {
         Reconnect()
 
         ; go to xmas map
-        if (moveOnce == 0 or matchModeEnabled) {
+        if (matchModeEnabled) {
             BetterClick(89, 302)
             Sleep 2000
             SendInput ("{a up}")
@@ -227,7 +226,6 @@ GoToRaids() {
             KeyWait "a" ; Wait for "d" to be fully processed
         }
 
-        moveOnce++
 
         ;sacred planet act 4
         Sleep 1200
