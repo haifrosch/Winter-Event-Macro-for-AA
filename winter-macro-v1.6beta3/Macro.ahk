@@ -1511,6 +1511,7 @@ Reconnect() {
             Sleep 1000
         }
         loop {
+            BetterClick(490, 400)
             AddToLog("Reconnecting to Roblox...")
             Sleep 15000
             if (ok := FindText(&X, &Y, 746, 476, 862, 569, 0, 0, AreasText)) {
